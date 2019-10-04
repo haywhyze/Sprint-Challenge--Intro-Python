@@ -8,9 +8,7 @@ class City():
         self.lon = lon
     
     def __str__(self):
-        return "name: "+str(self.name) \
-            + "\nlat: "+str(self.lat) \
-            + "\nlon: "+str(self.lon)
+        return "name: "+str(self.name) + " lat: "+str(self.lat) + " lon: "+str(self.lon)
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -77,7 +75,15 @@ for c in cities:
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
-  within = []
+  within = [
+        city
+      for city in cities
+      if
+        city.lat <= max(lat1, lat2) and
+        city.lat >= min(lat1, lat2) and
+        city.lon <= max(lon1, lon2) and
+        city.lon >= min(lon1, lon2)
+  ]
 
   # TODO Ensure that the lat and lon valuse are all floats
   # Go through each city and check to see if it falls within 
